@@ -12,8 +12,15 @@ window.onload = function() {
 
     /* Métodos */
     
-    persona.saludar = saludar; //Asignación de un método al objeto
-    persona.hablar = hablar; //Asignación de un método al objeto
+    persona.saludar = function() {
+        //console.log(this.nombre + " " + this.apellido);
+        if(this.nombre && this.apellido)
+        {
+            alert("Hola, soy " + this.nombre + " " + this.apellido);
+        }
+    }; //Asignación de un método al objeto
+
+    persona.hablar = (mensaje)=>alert(mensaje); //Asignación de un método al objeto, usando arrow function
     //alert(persona);
     persona.saludar(); //Llamado a un método del objeto
     persona.hablar("Estoy hablando en español"); //Llamado a un método del objeto
@@ -29,7 +36,9 @@ window.onload = function() {
         console.log(propiedad + ": " + persona[propiedad]);
     }*/
 
-    saludar();
+    //saludar();
+
+    persona.saludar();
 }
 
 
@@ -43,15 +52,6 @@ window.onload = function() {
     false     true     false     true     true
     false     false    false     false    true
 
+    false: undefined, null, 0, false, NaN, ""
+    true: cualquier valor diferente de false
 */
-
-function saludar() {
-    if(this.nombre && this.apellido)
-    {
-        alert("Hola, soy " + this.nombre + " " + this.apellido);
-    }
-}
-
-function hablar(mensaje){
-    alert(mensaje);
-}
