@@ -1,8 +1,8 @@
 let persona;
 
-window.onload = function() {
+/*window.onload = function() {
     persona = {};//Creación de un objeto vacío
-    /* Propiedades */
+    // Propiedades 
     persona.nombre = "Juan"; //Asignación de una propiedad al objeto
     persona.apellido = "Pérez"; //Asignación de una propiedad al objeto
     persona.edad = 30; //Asignación de una propiedad al objeto
@@ -10,7 +10,7 @@ window.onload = function() {
     persona.telefono = "123456789"; //Asignación de una propiedad al objeto
     persona.email = "admin@upb.edu.co"; //Asignación de una propiedad al objeto
 
-    /* Métodos */
+    // Métodos
     
     persona.saludar = function() {
         //console.log(this.nombre + " " + this.apellido);
@@ -19,6 +19,8 @@ window.onload = function() {
             alert("Hola, soy " + this.nombre + " " + this.apellido);
         }
     }; //Asignación de un método al objeto
+
+    persona.saludar = ()=>alert("Otra cosa");//Reasignacion de la función saludar
 
     persona.hablar = (mensaje)=>alert(mensaje); //Asignación de un método al objeto, usando arrow function
     //alert(persona);
@@ -32,15 +34,21 @@ window.onload = function() {
     //persona.email = undefined;
 
     //Recorrido de las propiedades del objeto
-    /*for (let propiedad in persona) {
-        console.log(propiedad + ": " + persona[propiedad]);
-    }*/
-
-    //saludar();
+    //for (let propiedad in persona) console.log(propiedad + ": " + persona[propiedad]);
 
     persona.saludar();
-}
 
+}*/
+
+//(function(){alert("hola");})() //Función anónima autoinvocada
+(function(){
+    let puntaje = 0;
+    
+    function incrementarPuntaje(puntos){
+        puntaje += puntos;
+        alert(puntaje);
+    }
+})();
 
 /*
 
