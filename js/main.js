@@ -1,7 +1,5 @@
 let teclas, btn_borrar;
 let pantalla;
-
-const teclado = document.getElementById('teclado');
 const numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 window.onload = function() {
