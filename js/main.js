@@ -7,26 +7,53 @@ const numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 window.onload = function() {
     pantalla = document.getElementById('pantalla');
     teclas = document.getElementsByClassName('tecla');
-    agregarEventos(teclas);
     pantalla.value = '';
-
+    
     /*for (let i = 0; i < teclas.length; i++) {
         teclas[i].innerHTML = '*';
     } */
-
+    
     // Generar el teclado aleatorio al cargar la página
     generarTeclado();
+    agregarEventos(teclas);
 }
 
 function agregarEventos(teclas){
-    for (let i = 0; i < teclas.length; i++) {
-        teclas[i].addEventListener('click', function(){
-            let valor = this.innerHTML;
+    let tecla;
+    for (let i = 0; i < teclas.length; i++) 
+    {
+        tecla = teclas[i];
+        tecla.setAttribute('valor', numeros[i]);
+        tecla.addEventListener('click', function(event){
+            let valor = event.target.getAttribute('valor');
+            
             if(pantalla.value.length<10)
             {
                 pantalla.value += valor;
             }
         });
+        tecla.addEventListener('mouseover', (event) => {
+            //event.target.textContent = '*';
+            ponerAsteriscos();
+        });
+
+        tecla.addEventListener('mouseout', (event) => {
+            /*let temp = event.target;
+            temp.textContent = temp.getAttribute('valor');*/
+            mostrarNumeros();
+        });
+    }
+}
+
+function mostrarNumeros(){
+    for (let i = 0; i < teclas.length; i++) {
+        teclas[i].innerHTML = numeros[i];
+    }
+}
+
+function ponerAsteriscos(){
+    for (let i = 0; i < teclas.length; i++) {
+        teclas[i].innerHTML = '*';
     }
 }
 
