@@ -1,4 +1,4 @@
-let teclas;
+let teclas, btn_borrar;
 let pantalla;
 
 const teclado = document.getElementById('teclado');
@@ -6,12 +6,11 @@ const numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 window.onload = function() {
     pantalla = document.getElementById('pantalla');
-    teclas = document.getElementsByClassName('tecla');
+    teclas = document.getElementsByClassName('item');
+    btn_borrar = document.querySelector('.borrar');
     pantalla.value = '';
     
-    /*for (let i = 0; i < teclas.length; i++) {
-        teclas[i].innerHTML = '*';
-    } */
+    btn_borrar.addEventListener('click', function(){ pantalla.value = ''; });
     
     // Generar el teclado aleatorio al cargar la página
     generarTeclado();
@@ -26,7 +25,7 @@ function agregarEventos(teclas){
         tecla.setAttribute('valor', numeros[i]);
         tecla.addEventListener('click', function(event){
             let valor = event.target.getAttribute('valor');
-            
+
             if(pantalla.value.length<10)
             {
                 pantalla.value += valor;
