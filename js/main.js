@@ -2,11 +2,11 @@ let datos = [];
 let gallery;
 let currentPage = 1;
 let itemsPerPage = 6;
+let pages_items;
 
 window.onload = function() {
    createFakeData();
    gallery = document.querySelector(".gallery");
-   renderPage(1);
    createPagination();
 }
 
@@ -16,21 +16,35 @@ function createPagination(){
     let buttons = "";
     buttons += `<li><a href="javascript:void(0);">&laquo;</a></li>`;
     for(let i = 1; i <= pages; i++){
-        buttons += `<a href="javascript:void(0);" class="pag_item" onclick="renderPage(${i})">${i}</a>`;
+        buttons += `<li><a href="javascript:void(0);" class="pag_item ${(i==1)?'selected':''}" page="${i}" onclick="renderPage(this);">${i}</a></li>`;
     }
     buttons += `<li><a href="javascript:void(0);">&raquo;</a></li>`;
 
     pagination.innerHTML = buttons;
-
+    pages_items = document.querySelectorAll(".pag_item");
+    renderPage();
 }
 
-function renderPage(num){
+function removeSelected(){
+    if(!pages_items)return;
+    for(let i = 0; i < pages_items.length; i++){
+        pages_items[i].classList.remove("selected");
+    }
+}
+
+function renderPage(obj){
+    
+    let num = obj?parseInt(obj.getAttribute("page")):1;
     let start = num;
     let end = num+itemsPerPage;
     let data = datos.slice(start, end);
     renderCards({
         data: data
     });
+    if(obj){
+        removeSelected();
+        obj.classList.add("selected");
+    }
 }
 
 function renderCards(obj){
