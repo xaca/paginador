@@ -3,7 +3,8 @@ let gallery;
 
 window.onload = function() {
    createFakeData();
-   gallery = document.getElementsByClassName("gallery");
+   gallery = document.querySelector(".gallery");
+   renderCards();
 }
 
 function renderCards(){
@@ -11,6 +12,7 @@ function renderCards(){
     for(let i = 0; i < datos.length; i++){
         cards += renderCard(datos[i]);
     }
+    gallery.innerHTML = cards;
 }
 
 function renderCard(obj){
@@ -25,7 +27,7 @@ function renderCard(obj){
     </div>
     <div>
         <img src="${obj.imagen}" alt="">
-    </div>`;
+    </div></section>`;
     return card;
 }
 
