@@ -37,7 +37,9 @@
     background-color: #1a1a1a;
     color: white !important;
 }
-
+.disabled{
+    visibility: hidden;
+}
 .card {
     display: flex;
     width: 320px;

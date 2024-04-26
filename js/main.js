@@ -2,7 +2,7 @@ let datos = [];
 let gallery;
 let currentPage = 1;
 let itemsPerPage = 6;
-let pages_items;
+let pages_items, btn_before, btn_next;
 
 window.onload = function() {
    createFakeData();
@@ -14,7 +14,7 @@ function createPagination(){
     let pagination = document.querySelector(".pagination");
     let pages = Math.ceil(datos.length / itemsPerPage);
     let buttons = "";
-    buttons += `<li><a href="javascript:void(0);">&laquo;</a></li>`;
+    buttons += `<li><a href="javascript:void(0);" id="btn_before" onclick="before();">&laquo;</a></li>`;
     for(let i = 1; i <= pages; i++){
         buttons += `
         <li>
@@ -26,10 +26,12 @@ function createPagination(){
             </a>
         </li>`;
     }
-    buttons += `<li><a href="javascript:void(0);">&raquo;</a></li>`;
+    buttons += `<li><a href="javascript:void(0);" id="btn_next" onclick="next();">&raquo;</a></li>`;
 
     pagination.innerHTML = buttons;
     pages_items = document.querySelectorAll(".pag_item");
+    btn_before = document.getElementById("btn_before");
+    btn_next = document.getElementById("btn_next");
     renderPage();
 }
 
@@ -38,6 +40,18 @@ function removeSelected(){
     for(let i = 0; i < pages_items.length; i++){
         pages_items[i].classList.remove("selected");
     }
+}
+
+function next(){
+    if(currentPage == pages_items.length)return;
+    let next = currentPage+1;
+    renderPage(pages_items[next-1]);
+}
+
+function before(){
+    if(currentPage == 1)return;
+    let before = currentPage-1;
+    renderPage(pages_items[before-1]);
 }
 
 function renderPage(obj){
@@ -53,6 +67,18 @@ function renderPage(obj){
     if(obj){
         removeSelected();
         obj.classList.add("selected");
+    }
+    if(currentPage == 1){
+        btn_before.classList.add("disabled");
+    }
+    else{
+        btn_before.classList.remove("disabled");
+    }
+    if(currentPage == pages_items.length){
+        btn_next.classList.add("disabled");
+    }
+    else{
+        btn_next.classList.remove("disabled");
     }
 }
 
