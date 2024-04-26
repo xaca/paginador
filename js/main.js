@@ -43,9 +43,10 @@ function removeSelected(){
 function renderPage(obj){
     
     let num = obj?parseInt(obj.getAttribute("page")):1;
-    let start = num-1;
+    let start = (num-1)*itemsPerPage;
     let end = start+itemsPerPage;
     let data = datos.slice(start, end);
+    currentPage = num;
     renderCards({
         data: data
     });
