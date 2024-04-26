@@ -1,33 +1,51 @@
 let datos = [];
 let gallery;
+let currentPage = 1;
+let itemsPerPage = 6;
 
 window.onload = function() {
    createFakeData();
    gallery = document.querySelector(".gallery");
-   renderCards();
+   renderPage({
+         start: 7,
+         end: 30
+    });
 }
 
-function renderCards(){
+function renderPage(obj){
+    let start = obj.start;
+    let end = obj.end;
+    let data = datos.slice(start, end);
+    renderCards({
+        data: data
+    });
+}
+
+function renderCards(obj){
     let cards = "";
-    for(let i = 0; i < datos.length; i++){
-        cards += renderCard(datos[i]);
+    let data = obj.data;
+
+    for(let i = 0; i < data.length; i++){
+        cards += renderCard(data[i]);
     }
     gallery.innerHTML = cards;
 }
 
 function renderCard(obj){
     //Template literal cuando se usan las comillas francesas ``
-    let card = `<section class="card">
-    <div>
-        <h3>${obj.nombre}</h3>
-        <span>${obj.precio}</span>
-        <span>${obj.cantidad}</span>
-        <p>${obj.descripcion}</p>
-        <a href="#" class="btn">Ver más</a>
-    </div>
-    <div>
-        <img src="${obj.imagen}" alt="">
-    </div></section>`;
+    let card = `
+    <section class="card">
+        <div>
+            <h3>${obj.nombre}</h3>
+            <span>${obj.precio}</span>
+            <span>${obj.cantidad}</span>
+            <p>${obj.descripcion}</p>
+            <a href="#" class="btn">Ver más</a>
+        </div>
+        <div>
+            <img src="${obj.imagen}" alt="">
+        </div>
+    </section>`;
     return card;
 }
 
