@@ -150,5 +150,61 @@ function createFakeData(){
         descripcion: "Cargador de portatil universal", 
         imagen: "https://icons.iconarchive.com/icons/microsoft/fluentui-emoji-flat/128/Alien-Flat-icon.png"
     });
+
+    datos.push({
+        nombre: "Monopatin electrico", 
+        precio: 1000, 
+        cantidad: 5,
+        descripcion: "Monopatin electrico con bateria de litio", 
+        imagen: "https://icons.iconarchive.com/icons/gartoon-team/gartoon-misc/128/Emblem-Photos-icon.png"
+    });
+
+    datos.push({
+        nombre: "Laptop", 
+        precio: 1000, 
+        cantidad: 5,
+        descripcion: "Laptop con procesador i7 y 16GB de RAM", 
+        imagen: "https://icons.iconarchive.com/icons/gartoon-team/gartoon-misc/128/Dialog-Password-Lock-icon.png"
+    });
+
+    datos.push({
+        nombre: "Audifonos bluetooth", 
+        precio: 1000, 
+        cantidad: 5,
+        descripcion: "Audifonos bluetooth con cancelacion de ruido", 
+        imagen: "https://icons.iconarchive.com/icons/gartoon-team/gartoon-misc/128/Gtk-Configure-Preferences-icon.png"
+    });
+
+    datos.push({
+        nombre: "Parlante portatil", 
+        precio: 1000, 
+        cantidad: 5,
+        descripcion: "Parlante portatil con bluetooth", 
+        imagen: "https://icons.iconarchive.com/icons/gartoon-team/gartoon-misc/128/Stock-Edit-Bookmarks-icon.png"
+    });
+
+    datos.push({
+        nombre: "Ventilador", 
+        precio: 1000, 
+        cantidad: 5,
+        descripcion: "Ventilador de torre con control remoto", 
+        imagen: "https://icons.iconarchive.com/icons/gartoon-team/gartoon-misc/128/Stock-New-Meeting-Hands-icon.png"
+    });
+
+    datos.push({
+        nombre: "Mouse inalambrico", 
+        precio: 1000, 
+        cantidad: 5,
+        descripcion: "Mouse inalambrico con bateria recargable", 
+        imagen: "https://icons.iconarchive.com/icons/gartoon-team/gartoon-misc/128/Stock-New-24h-Appointment-icon.png"
+    });
+
+    datos.push({
+        nombre: "Teclado inalambrico", 
+        precio: 1000, 
+        cantidad: 5,
+        descripcion: "Teclado inalambrico con bateria recargable", 
+        imagen: "https://icons.iconarchive.com/icons/gartoon-team/gartoon-misc/128/Stock-Save-Pdf-icon.png"
+    });
 }
 
