@@ -16,7 +16,15 @@ function createPagination(){
     let buttons = "";
     buttons += `<li><a href="javascript:void(0);">&laquo;</a></li>`;
     for(let i = 1; i <= pages; i++){
-        buttons += `<li><a href="javascript:void(0);" class="pag_item ${(i==1)?'selected':''}" page="${i}" onclick="renderPage(this);">${i}</a></li>`;
+        buttons += `
+        <li>
+            <a href="javascript:void(0);" 
+            class="pag_item ${(i==1)?'selected':''}" 
+            page="${i}" 
+            onclick="renderPage(this);">
+                ${i}
+            </a>
+        </li>`;
     }
     buttons += `<li><a href="javascript:void(0);">&raquo;</a></li>`;
 
@@ -35,8 +43,8 @@ function removeSelected(){
 function renderPage(obj){
     
     let num = obj?parseInt(obj.getAttribute("page")):1;
-    let start = num;
-    let end = num+itemsPerPage;
+    let start = num-1;
+    let end = start+itemsPerPage;
     let data = datos.slice(start, end);
     renderCards({
         data: data
