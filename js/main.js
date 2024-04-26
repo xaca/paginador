@@ -6,15 +6,27 @@ let itemsPerPage = 6;
 window.onload = function() {
    createFakeData();
    gallery = document.querySelector(".gallery");
-   renderPage({
-         start: 7,
-         end: 30
-    });
+   renderPage(1);
+   createPagination();
 }
 
-function renderPage(obj){
-    let start = obj.start;
-    let end = obj.end;
+function createPagination(){
+    let pagination = document.querySelector(".pagination");
+    let pages = Math.ceil(datos.length / itemsPerPage);
+    let buttons = "";
+    buttons += `<li><a href="javascript:void(0);">&laquo;</a></li>`;
+    for(let i = 1; i <= pages; i++){
+        buttons += `<a href="javascript:void(0);" class="pag_item" onclick="renderPage(${i})">${i}</a>`;
+    }
+    buttons += `<li><a href="javascript:void(0);">&raquo;</a></li>`;
+
+    pagination.innerHTML = buttons;
+
+}
+
+function renderPage(num){
+    let start = num;
+    let end = num+itemsPerPage;
     let data = datos.slice(start, end);
     renderCards({
         data: data
