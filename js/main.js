@@ -1,113 +1,15 @@
 let datos = [];
-let gallery;
-let currentPage = 1;
-let itemsPerPage = 6;
-let pages_items, btn_before, btn_next;
+let paginator;
 
 window.onload = function() {
    createFakeData();
-   gallery = document.querySelector(".gallery");
-   createPagination();
-}
-
-function createPagination(){
-    let pagination = document.querySelector(".pagination");
-    let pages = Math.ceil(datos.length / itemsPerPage);
-    let buttons = "";
-    buttons += `<li><a href="javascript:void(0);" id="btn_before" onclick="before();">&laquo;</a></li>`;
-    for(let i = 1; i <= pages; i++){
-        buttons += `
-        <li>
-            <a href="javascript:void(0);" 
-            class="pag_item ${(i==1)?'selected':''}" 
-            page="${i}" 
-            onclick="renderPage(this);">
-                ${i}
-            </a>
-        </li>`;
-    }
-    buttons += `<li><a href="javascript:void(0);" id="btn_next" onclick="next();">&raquo;</a></li>`;
-
-    pagination.innerHTML = buttons;
-    pages_items = document.querySelectorAll(".pag_item");
-    btn_before = document.getElementById("btn_before");
-    btn_next = document.getElementById("btn_next");
-    renderPage();
-}
-
-function removeSelected(){
-    if(!pages_items)return;
-    for(let i = 0; i < pages_items.length; i++){
-        pages_items[i].classList.remove("selected");
-    }
-}
-
-function next(){
-    if(currentPage == pages_items.length)return;
-    let next = currentPage+1;
-    renderPage(pages_items[next-1]);
-}
-
-function before(){
-    if(currentPage == 1)return;
-    let before = currentPage-1;
-    renderPage(pages_items[before-1]);
-}
-
-function renderPage(obj){
-    
-    let num = obj?parseInt(obj.getAttribute("page")):1;
-    let start = (num-1)*itemsPerPage;
-    let end = start+itemsPerPage;
-    let data = datos.slice(start, end);
-    currentPage = num;
-    renderCards({
-        data: data
-    });
-    if(obj){
-        removeSelected();
-        obj.classList.add("selected");
-    }
-    if(currentPage == 1){
-        btn_before.classList.add("disabled");
-    }
-    else{
-        btn_before.classList.remove("disabled");
-    }
-    if(currentPage == pages_items.length){
-        btn_next.classList.add("disabled");
-    }
-    else{
-        btn_next.classList.remove("disabled");
-    }
-}
-
-function renderCards(obj){
-    let cards = "";
-    let data = obj.data;
-
-    for(let i = 0; i < data.length; i++){
-        cards += renderCard(data[i]);
-    }
-    gallery.innerHTML = cards;
-}
-
-function renderCard(obj){
-    //Template literal cuando se usan las comillas francesas ``
-    let card = `
-    <section class="card">
-        <div>
-            <h3>${obj.nombre}</h3>
-            <span>${obj.precio}</span>
-            <span>${obj.cantidad}</span>
-            <p>${obj.descripcion}</p>
-            <a href="#" class="btn">Ver más</a>
-        </div>
-        <div>
-            <img src="${obj.imagen}" alt="">
-        </div>
-    </section>`;
-    return card;
+   paginator = new Paginator({
+    itemsPerPage:6,
+    contenedor:document.querySelector(".pagination"),
+    gallery:document.querySelector(".gallery"),
+    data:datos
+   });
+   paginator.createPagination();
 }
 
 function createFakeData(){
