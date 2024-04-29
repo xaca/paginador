@@ -19,8 +19,7 @@ class Paginator{
             <li>
                 <a href="javascript:void(0);" 
                 class="pag_item ${(i==1)?'selected':''}" 
-                page="${i}" 
-                onclick="renderPage(this);">
+                page="${i}" >
                     ${i}
                 </a>
             </li>`;
@@ -34,8 +33,14 @@ class Paginator{
         this.btn_next.addEventListener("click",this.next.bind(this));
         this.btn_before.addEventListener("click",this.before.bind(this));
         this.renderPage.call(this);
+        this.asignarEventosPaginas.call(this);
     }
-    
+    asignarEventosPaginas(){
+        for(let i = 0; i < this.pages_items.length; i++){
+            this.pages_items[i].addEventListener("click",
+            this.renderPage.bind(this,this.pages_items[i]));
+        }
+    }
     removeSelected(){
         if(!this.pages_items)return;
         for(let i = 0; i < this.pages_items.length; i++){
