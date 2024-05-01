@@ -4,3 +4,8 @@ En este repositorio, crearemos varios ejemplos usando ramas, y al final, integra
 
 - Se configuró la dependencia http-server
 - Se refactorizó el proyecto usando módulos y clases
+
+## Pendientes
+
+- Crear un diseño responsive para la galeria
+- Evitar saltó en el paginador cuando los cards son de descripción variable
