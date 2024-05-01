@@ -9,7 +9,6 @@ class Paginator{
         this.gallery = obj.gallery;
         this.data = obj.data?obj.data:[];
     }
-
     createPagination(){
         let pages = Math.ceil(this.data.length / this.itemsPerPage);
         let buttons = "";
@@ -33,9 +32,9 @@ class Paginator{
         this.btn_next.addEventListener("click",this.next.bind(this));
         this.btn_before.addEventListener("click",this.before.bind(this));
         this.renderPage.call(this);
-        this.asignarEventosPaginas.call(this);
+        this.createEventsPages.call(this);
     }
-    asignarEventosPaginas(){
+    createEventsPages(){
         for(let i = 0; i < this.pages_items.length; i++){
             this.pages_items[i].addEventListener("click",
             this.renderPage.bind(this,this.pages_items[i]));
@@ -47,19 +46,16 @@ class Paginator{
             this.pages_items[i].classList.remove("selected");
         }
     }
-    
     next(){
         if(this.currentPage == this.pages_items.length)return;
         let next = this.currentPage+1;
         this.renderPage.call(this,this.pages_items[next-1]);
     }
-    
     before(){
         if(this.currentPage == 1)return;
         let before = this.currentPage-1;
         this.renderPage.call(this,this.pages_items[before-1]);
     }
-    
     renderPage(obj){
         
         let num = obj?parseInt(obj.getAttribute("page")):1;
@@ -87,7 +83,6 @@ class Paginator{
             this.btn_next.classList.remove("disabled");
         }
     }
-    
     renderCards(obj){
         let cards = "";
         let data = obj.data;
@@ -97,7 +92,6 @@ class Paginator{
         }
         this.gallery.innerHTML = cards;
     }
-    
     renderCard(obj){
         //Template literal cuando se usan las comillas francesas ``
         let card = `
@@ -116,3 +110,5 @@ class Paginator{
         return card;
     }
 }
+
+export default Paginator;

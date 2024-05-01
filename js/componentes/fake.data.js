@@ -1,7 +1,4 @@
 class FakeData{
-    //static datos = [];
-    constructor(){
-    }
     static create(){
         let datos = [];
         datos.push({
@@ -128,3 +125,5 @@ class FakeData{
         return datos;
     }
 }
+
+export default FakeData;
