@@ -1,0 +1,14 @@
+{
+  "name": "paginador",
+  "version": "1.0.0",
+  "description": "En este repositorio, crearemos varios ejemplos usando ramas, y al final, integramos todo en un ejemplo de un paginador, que es una respuesta a una consulta de una base de datos. (Simulada, solo representacion de datos en la interfaz)",
+  "scripts": {
+    "start": "http-server -o"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
